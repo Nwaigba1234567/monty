@@ -46,6 +46,17 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+#ifndef OPCODE_H
+#define OPCODE_H
+
+typedef struct Instruction {
+    char opcode[5];
+    struct Instruction* next;
+} Instruction;
+
+#endif /* OPCODE_H */
+
+
 /* Function prototypes */
 void push(int value);
 void pall();
@@ -55,5 +66,7 @@ int stackIsFull(Stack *stack);
 void stackPush(Stack *stack, int value);
 int stackPop(Stack *stack);
 void executeAdd(Stack *stack, int lineNum);
+int main(int argc, char* argv[]);
+void execute_instruction(Instruction* instr);
 
 #endif
